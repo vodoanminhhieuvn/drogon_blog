@@ -258,7 +258,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"Svelty front-end\",\n    \"summary\": \"How to create fastest front-end app\",\n    \"slug\": \"FE-Svelty\"\n}",
+							"raw": "{\n    \"title\": \"Svelty front-end\",\n    \"summary\": \"How to create fastest front-end app\",\n    \"slug\": \"FE-Svelty\",\n    \"categories\": [1, 2]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -611,9 +611,6 @@
 			"item": [
 				{
 					"name": "Create",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -625,11 +622,11 @@
 								}
 							]
 						},
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"Back End\",\n    \"content\": \"Back end technologies related blog\",\n    \"slug\": \"BE\"\n}",
+							"raw": "{\n    \"title\": \"Front End\",\n    \"content\": \"Front end technologies related blog\",\n    \"slug\": \"FE\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -637,13 +634,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{base}}/categories/",
+							"raw": "{{base}}/categories",
 							"host": [
 								"{{base}}"
 							],
 							"path": [
-								"categories",
-								""
+								"categories"
 							]
 						}
 					},
@@ -665,13 +661,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base}}/categories/",
+							"raw": "{{base}}/categories",
 							"host": [
 								"{{base}}"
 							],
 							"path": [
-								"categories",
-								""
+								"categories"
 							]
 						}
 					},
