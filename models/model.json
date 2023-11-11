@@ -1,0 +1,117 @@
+{
+    "rdbms": "postgresql",
+    "host": "127.0.0.1",
+    "port": 5432,
+    "dbname": "blog",
+    "schema": "public",
+    "user": "postgres",
+    "password": "YourSecret",
+    "tables": [],
+    "relationships": {
+      "enabled": true,
+      "items": [
+        {
+          "type": "has many",
+          "original_table_name": "user_",
+          "original_table_alias": "user",
+          "original_key": "id",
+          "target_table_name": "post",
+          "target_table_alias": "posts",
+          "target_key": "author_id",
+          "enable_reverse": true
+        },
+        {
+          "type": "has many",
+          "original_table_name": "user_",
+          "original_table_alias": "user",
+          "original_key": "id",
+          "target_table_name": "comment",
+          "target_table_alias": "comments",
+          "target_key": "user_id",
+          "enable_reverse": true
+        },
+        {
+          "type": "has one",
+          "original_table_name": "post",
+          "original_table_alias": "post",
+          "original_key": "id",
+          "target_table_name": "post_meta",
+          "target_table_alias": "post_meta",
+          "target_key": "post_id",
+          "enable_reverse": true
+        },
+        {
+          "type": "has many",
+          "original_table_name": "post",
+          "original_table_alias": "post",
+          "original_key": "id",
+          "target_table_name": "post",
+          "target_table_alias": "posts",
+          "target_key": "parent_id",
+          "enable_reverse": true
+        },
+        {
+          "type": "has many",
+          "original_table_name": "post",
+          "original_table_alias": "post",
+          "original_key": "id",
+          "target_table_name": "comment",
+          "target_table_alias": "comments",
+          "target_key": "post_id",
+          "enable_reverse": true
+        },
+        {
+          "type": "has many",
+          "original_table_name": "comment",
+          "original_table_alias": "comment",
+          "original_key": "id",
+          "target_table_name": "comment",
+          "target_table_alias": "comments",
+          "target_key": "parent_id",
+          "enable_reverse": true
+        },
+        {
+          "type": "many to many",
+          "original_table_name": "post",
+          "original_table_alias": "posts",
+          "original_key": "id",
+          "pivot_table": {
+            "table_name": "post_tag",
+            "original_key": "post_id",
+            "target_key": "tag_id"
+          },
+          "target_table_name": "tag",
+          "target_table_alias": "tags",
+          "target_key": "id",
+          "enable_reverse": true
+        },
+        {
+          "type": "many to many",
+          "original_table_name": "post",
+          "original_table_alias": "posts",
+          "original_key": "id",
+          "pivot_table": {
+            "table_name": "post_category",
+            "original_key": "post_id",
+            "target_key": "category_id"
+          },
+          "target_table_name": "category",
+          "target_table_alias": "categories",
+          "target_key": "id",
+          "enable_reverse": true
+        }
+      ]
+    },
+    "restful_api_controllers": {
+      "enabled": false,
+      "resource_uri": "/*",
+      "class_name": "Restful*Ctrl",
+      "filters": [],
+      "db_client": {
+        "name": "default",
+        "is_fast": false
+      },
+      "directory": "controllers",
+      "generate_base_only": false
+    }
+  }

@@ -1,0 +1,715 @@
+{
+	"info": {
+		"_postman_id": "c2af4cb7-eb56-4b88-aac5-f94d672e98e9",
+		"name": "Blog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12746751",
+		"_collection_link": "https://www.postman.com/vodoanminhhieuapple/workspace/e-learning/collection/12746751-c2af4cb7-eb56-4b88-aac5-f94d672e98e9?action=share&source=collection_link&creator=12746751"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = JSON.parse(responseBody);",
+									"pm.collectionVariables.set(\"token\", response.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"admin\",\n    \"last_name\": \"blog\",\n    \"email\": \"admin@gmail.com\",\n    \"password\": \"Admin@123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/auth/register",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = JSON.parse(responseBody);",
+									"pm.collectionVariables.set(\"token\", response.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@gmail.com\",\n    \"password\": \"Admin@123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/auth/login",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/users",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOne",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateOne",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"intro\": \"Back-end developer\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/users/2",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Me",
+			"item": [
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"intro\": \"not a back-end developer\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/me",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Me",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/me",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreatePost",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Svelty front-end\",\n    \"summary\": \"How to create fastest front-end app\",\n    \"slug\": \"FE-Svelty\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/me/posts",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"me",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPost",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/me/posts",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"me",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"C++ backend\",\n    \"summary\": \"How to create fastest back-end app\",\n    \"slug\": \"BE_Drogon\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/posts?userId=1",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"posts"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOne",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/posts/1",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"posts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/posts",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Hello world\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/posts/13",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"posts",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateMeta",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"content\": \"# Building a Database-Driven Blog with Drongo C++ and PostgreSQL\\n\\n## Introduction\\n\\nIn today's tech-savvy world, blogs remain a popular means of sharing information and ideas. But have you ever wondered how to create a blog using C++? In this blog post, we'll explore the Drongo C++ framework and demonstrate how you can build a database-driven blog with PostgreSQL as the backend. By the end of this post, you'll have a solid foundation for creating your very own blog using C++.\\n\\n### What is Drongo C++?\\n\\nDrongo C++ is a powerful web application framework that aims to simplify the process of building robust and efficient web applications in C++. It is designed to be fast, scalable, and easy to use. Drongo C++ provides the tools and libraries necessary for developing modern web applications, making it an ideal choice for our blog project.\\n\\n## Setting Up Your Environment\\n\\nBefore we dive into creating the blog, you'll need to set up your development environment. Make sure you have the following components installed:\\n1. **Drongo C++:** You can download and install Drongo C++ from its official website.\\n2. **PostgreSQL:** Install and configure PostgreSQL, an open-source relational database management system, to store blog data. You can download PostgreSQL from the official website and follow the installation instructions for your platform.\\n3. **CMake:** CMake is used for building C++ applications. Install it to configure and build your project.\\n4. **A C++ Compiler:** You'll need a C++ compiler to compile and run your Drongo C++ application. G++ is a popular choice for this purpose.\\n\\n## Creating the Blog Application\\n\\nNow that your environment is set up, let's get started with building your blog application using Drongo C++. Here's a step-by-step guide:\\n\\n1. **Project Initialization:** Start by creating a new directory for your project and initializing it using CMake. This will set up the basic project structure.\\n\\n```bash\\nmkdir myblog\\ncd myblog\\ncmake .\\n```\\n\\n2. **Database Configuration:** Next, create a configuration file for your PostgreSQL database. You'll need to specify the database connection parameters, such as the host, port, username, and password. This configuration file will be used to connect to the database within your Drongo C++ application.\\n\\n3. **Model Definition:** Define your blog data models using Drongo C++. You can create classes that represent blog posts, users, and comments. These classes will map to tables in your PostgreSQL database.\\n\\n4. **Routing and Views:** Create routes for your blog application, such as routes for viewing blog posts, creating new posts, and handling user registration. Develop views to render HTML templates for different parts of your blog.\\n\\n5. **Database Interaction:** Within your routes and views, interact with the PostgreSQL database using the C++ PostgreSQL library. You can perform operations like inserting new blog posts, retrieving posts, and managing user accounts.\\n\\n6. **User Authentication:** Implement user authentication to allow users to register and log in to your blog. You can use various authentication libraries available for C++ or build your own authentication system.\\n\\n7. **Frontend:** Develop the frontend of your blog using HTML, CSS, and JavaScript. You can use popular front-end frameworks and libraries like Bootstrap or React to create an appealing user interface.\\n\\n8. **Testing:** Don't forget to write tests to ensure the reliability of your blog application. Drongo C++ provides testing tools to help you with this.\\n\\n## Conclusion\\n\\nIn this blog post, we've explored the Drongo C++ framework and demonstrated how to create a database-driven blog using PostgreSQL as the backend. By following the steps outlined in this post, you can build your own C++ blog application and start sharing your thoughts and ideas with the world.\\n\\nRemember that this is just the beginning. You can further enhance your blog by adding features like comment sections, image uploads, and search functionality. Drongo C++ offers a robust foundation to build web applications in C++, and your blog project is just the tip of the iceberg. Have fun coding!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/me/posts/1/meta",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"me",
+								"posts",
+								"1",
+								"meta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMeta",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/me/posts/1/meta",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"me",
+								"posts",
+								"1",
+								"meta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/posts/1",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"posts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"Greate framework\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/comments/posts/1",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"comments",
+								"posts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetFromPost",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/comments/posts/1",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"comments",
+								"posts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Create",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Back End\",\n    \"content\": \"Back end technologies related blog\",\n    \"slug\": \"BE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/categories/",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"categories",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/categories/",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"categories",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
