@@ -63,6 +63,11 @@ For more details you can import Blog.postman_collection.json into Postman.
 
 ## Databases
 
+### Initialize the database
+
+Run [init.sql](/sql/init_schema.sql) to create the database and table
+
+### Configure the database
 By default, the project is configured to connect to PostgreSQL database.
 You need to update your own [config.json](config.json) and [model.json](models/model.json) file to connect to your own database.
 
@@ -72,4 +77,4 @@ You want to create a new model, you can use the following command:
     drogon_ctl create model models
 ```
 
-## Deployment (I don't know when it will be deployed :->)
+## Deployment (I don't know when it will be deployed because I'm broke :->)
