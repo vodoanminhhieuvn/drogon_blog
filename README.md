@@ -71,7 +71,7 @@ Window I have no ideas, because I don't have window device, may god bless your s
     ./wblog
     ```
 
-5Open your Postman and navigate to `http://localhost:3000` to access the blog.
+5. Open your Postman and navigate to `http://localhost:3000` to access the blog.
 
 
 ## Databases
