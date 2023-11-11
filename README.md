@@ -36,13 +36,26 @@ For more details you can import [Blog.postman_collection.json](Blog.postman_coll
 
 ### Setting up a project
 
+I tested on OSx so Linux will probably work. 
+Window I have no ideas, because I don't have window device, may god bless your soul.
+
 1. Clone the repository:
 
     ```bash
     git clone https://github.com/vodoanminhhieuvn/drogon_blog.git
     ```
 
-2. Build the project:
+2. Install dependencies:
+- Please follow the instructions on [Drogon](https://github.com/drogonframework/drogon/wiki/ENG-02-Installation) to install Drogon.
+- To add third-parties library, create library folder.
+```bash
+    mkdir library
+    git clone https://github.com/Thalhammer/jwt-cpp.git
+    git clone https://github.com/openssl/openssl.git
+    git clone https://github.com/trusch/libbcrypt.git
+````
+
+3. Build the project:
 
     ```bash
     cd drogon-blog
@@ -52,13 +65,13 @@ For more details you can import [Blog.postman_collection.json](Blog.postman_coll
     make
     ```
 
-3. Run the server:
+4. Run the server:
 
     ```bash
     ./wblog
     ```
 
-4. Open your Postman and navigate to `http://localhost:3000` to access the blog.
+5Open your Postman and navigate to `http://localhost:3000` to access the blog.
 
 
 ## Databases
