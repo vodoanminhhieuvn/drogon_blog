@@ -25,7 +25,7 @@ BASE_URL : localhost:3000
 * `/Comments/**` - Comments endpoints
 * `/Categories/**` - Categories endpoints
 
-For more details you can import Blog.postman_collection.json into Postman.
+For more details you can import [Blog.postman_collection.json](Blog.postman_collection.json) into Postman.
 
 ### Requirement
 
