@@ -50,9 +50,11 @@ Window I have no ideas, because I don't have window device, may god bless your s
 - To add third-parties library, create library folder.
 ```bash
     mkdir library
+    cd library
     git clone https://github.com/Thalhammer/jwt-cpp.git
     git clone https://github.com/openssl/openssl.git
     git clone https://github.com/trusch/libbcrypt.git
+    cd ..
 ````
 
 3. Build the project:
